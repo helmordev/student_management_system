@@ -19,11 +19,12 @@ class DatabaseSeeder extends Seeder
             'full_name' => 'System Administrator',
             'email' => 'admin@school.edu',
             'password' => Hash::make('admin123'),
-            'password_changed' => true,
         ]);
 
-        $this->command->info('Admin user created successfully!');
-        $this->command->info('Email: admin@school.edu');
-        $this->command->info('Password: admin123');
+        $this->call([
+            StudentSeeder::class,
+            GradeSeeder::class,
+            AnnouncementSeeder::class,
+        ]);
     }
 }
