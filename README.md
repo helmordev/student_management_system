@@ -4,28 +4,28 @@ This is a web-based Student Management System built with Laravel, designed to he
 
 ## Features
 
--   **User Management:** Secure authentication and management of user accounts.
--   **Student Management:** Comprehensive services for managing student data.
--   **Grade Management:** Record and track student grades.
--   **Announcement System:** Create and manage announcements for students and staff.
--   **Activity Logging:** Keep a detailed log of system activities.
--   **PDF Reporting:** Generate PDF reports for various data (e.g., student records, grades).
+- **User Management:** Secure authentication and management of user accounts.
+- **Student Management:** Comprehensive services for managing student data.
+- **Grade Management:** Record and track student grades.
+- **Announcement System:** Create and manage announcements for students and staff.
+- **Activity Logging:** Keep a detailed log of system activities.
+- **PDF Reporting:** Generate PDF reports for various data (e.g., student records, grades).
 
 ## Technologies Used
 
--   **Backend:**
-    -   PHP 8+
-    -   Laravel 12 (PHP Framework)
-    -   Composer (PHP Dependency Manager)
-    -   Dompdf (for PDF generation)
--   **Frontend:**
-    -   NPM (Node.js Package Manager)
-    -   Vite (Frontend Build Tool)
-    -   Tailwind CSS (Styling Framework)
--   **Database:**
-    -   MySQL
--   **Testing:**
-    -   PestPHP
+- **Backend:**
+    - PHP 8+
+    - Laravel 12 (PHP Framework)
+    - Composer (PHP Dependency Manager)
+    - Dompdf (for PDF generation)
+- **Frontend:**
+    - NPM (Node.js Package Manager)
+    - Vite (Frontend Build Tool)
+    - Tailwind CSS (Styling Framework)
+- **Database:**
+    - MySQL
+- **Testing:**
+    - PestPHP
 
 ## Installation
 
@@ -35,16 +35,16 @@ Follow these steps to get the project up and running on your local machine.
 
 Ensure you have the following installed:
 
--   PHP (8.2 or higher)
--   Composer
--   Node.js (LTS version recommended)
--   NPM or Yarn
--   A database server (e.g., MySQL, PostgreSQL, or SQLite for local development)
+- PHP (8.2 or higher)
+- Composer
+- Node.js (LTS version recommended)
+- NPM or Yarn
+- A database server (e.g., MySQL, PostgreSQL, or SQLite for local development)
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/student_management_system.git
+git clone https://github.com/helmordev/student_management_system.git
 cd student_management_system
 ```
 
@@ -57,12 +57,13 @@ composer setup
 ```
 
 This script will:
--   Install PHP dependencies via Composer.
--   Copy `.env.example` to `.env`.
--   Generate an application key.
--   Run database migrations.
--   Install Node.js dependencies via NPM.
--   Build frontend assets using Vite.
+
+- Install PHP dependencies via Composer.
+- Copy `.env.example` to `.env`.
+- Generate an application key.
+- Run database migrations.
+- Install Node.js dependencies via NPM.
+- Build frontend assets using Vite.
 
 ### 3. Manual Setup (If `composer setup` fails or for more control)
 
@@ -89,7 +90,7 @@ Run the database migrations to create the necessary tables. If you have seeders,
 
 ```bash
 php artisan migrate
-# php artisan db:seed # Uncomment if you have seeders
+php artisan db:seed
 ```
 
 #### d. Install Node.js Dependencies
@@ -115,9 +116,10 @@ composer run dev
 ```
 
 This command will concurrently start:
--   The Laravel development server (`php artisan serve`)
--   A queue listener (`php artisan queue:listen`)
--   The Vite development server (`npm run dev`)
+
+- The Laravel development server (`php artisan serve`)
+- A queue listener (`php artisan queue:listen`)
+- The Vite development server (`npm run dev`)
 
 Access the application in your browser at `http://127.0.0.1:8000` (or the address shown in your terminal).
 
@@ -125,8 +127,8 @@ Access the application in your browser at `http://127.0.0.1:8000` (or the addres
 
 The system utilizes several key tables to manage student data:
 
--   `users`: Stores user authentication information.
--   `grades`: Records student grades, likely linked to users/students.
--   `announcements`: Stores system-wide announcements.
--   `activity_logs`: Logs various actions and events within the system.
--   `cache`, `jobs`, `password_reset_tokens`, `sessions`: Standard Laravel tables for caching, queues, password resets, and session management.
+- `users`: Stores user authentication information.
+- `grades`: Records student grades, likely linked to users/students.
+- `announcements`: Stores system-wide announcements.
+- `activity_logs`: Logs various actions and events within the system.
+- `cache`, `jobs`, `password_reset_tokens`, `sessions`: Standard Laravel tables for caching, queues, password resets, and session management.
