@@ -143,7 +143,7 @@
                             Permanently delete this activity log entry. This action cannot be undone.
                         </p>
                     </div>
-                    <form method="POST" action="{{ route('admin.activity-logs.delete', $activityLog) }}" class="inline">
+                    <form method="POST" action="{{ route('admin.activity-logs.delete', $activityLog->id) }}" class="inline">
                         @csrf
                         @method('DELETE')
                         <button type="submit"

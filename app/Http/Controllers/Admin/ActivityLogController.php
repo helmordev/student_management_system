@@ -45,12 +45,13 @@ class ActivityLogController extends Controller
     {
         $activityLog->delete();
 
-        return back()->with('success', 'Activity log deleted successfully.');
+        return redirect()->route('admin.activity-logs.index')->with('success', 'Activity log deleted successfully.');
     }
 
     public function clearOldLogs()
     {
-        $cutoffDate = now()->subMonths(3);
+        // clear log older than 1 days
+        $cutoffDate = now()->subDays(1);
         ActivityLog::where('performed_at', '<', $cutoffDate)->delete();
 
         return back()->with('success', 'Old activity logs cleared successfully.');
