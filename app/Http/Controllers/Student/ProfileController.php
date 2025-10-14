@@ -64,13 +64,13 @@ class ProfileController extends Controller
         $request->validate([
             'current_password' => 'required|string',
             'new_password' => 'required|string|min:8',
-            'confirm_password' => 'required|string|same:new_password',
+            'new_password_confirmation' => 'required|string|same:new_password',
         ], [
             'current_password.required' => 'Current password is required.',
             'new_password.required' => 'New password is required.',
             'new_password.min' => 'New password must be at least 8 characters.',
-            'confirm_password.required' => 'Confirm password is required.',
-            'confirm_password.same' => 'Confirm password does not match.',
+            'new_password_confirmation.required' => 'Confirm password is required.',
+            'new_password_confirmation.same' => 'Confirm password does not match.',
         ]);
 
         $student = Auth::user();

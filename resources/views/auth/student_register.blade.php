@@ -112,10 +112,7 @@
                                 @error('password')
                                     <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                                 @enderror
-                                <p class="text-xs text-gray-500 mt-2">
-                                    Password must be at least 8 characters long
-                                </p>
-                            </div>
+                           </div>
 
                             <!-- Confirm Password -->
                             <div>
@@ -139,15 +136,7 @@
                                         <i class="fas fa-check-circle text-green-500 mr-2"></i>
                                         At least 8 characters long
                                     </li>
-                                    <li class="flex items-center">
-                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                        Include uppercase and lowercase letters
-                                    </li>
-                                    <li class="flex items-center">
-                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                                        Include numbers and special characters
-                                    </li>
-                                </ul>
+                               </ul>
                             </div>
 
                             <!-- Terms and Conditions -->
@@ -209,19 +198,7 @@
                 } else if (text.includes('8 characters')) {
                     icon.className = 'fas fa-times-circle text-red-500 mr-2';
                 }
-
-                if (text.includes('uppercase') && /[A-Z]/.test(password) && /[a-z]/.test(password)) {
-                    icon.className = 'fas fa-check-circle text-green-500 mr-2';
-                } else if (text.includes('uppercase')) {
-                    icon.className = 'fas fa-times-circle text-red-500 mr-2';
-                }
-
-                if (text.includes('numbers') && /[0-9]/.test(password) && /[^A-Za-z0-9]/.test(password)) {
-                    icon.className = 'fas fa-check-circle text-green-500 mr-2';
-                } else if (text.includes('numbers')) {
-                    icon.className = 'fas fa-times-circle text-red-500 mr-2';
-                }
-            });
+           });
         });
 
         // Auto-hide flash messages after 5 seconds
