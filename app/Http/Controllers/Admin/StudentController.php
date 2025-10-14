@@ -5,18 +5,20 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Services\ActivityLogService;
+use App\Services\StudentService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 
 class StudentController extends Controller
 {
     protected $activityLogService;
+    protected $studentService;
 
-    public function __construct(ActivityLogService $activityLogService)
+    public function __construct(ActivityLogService $activityLogService, StudentService $studentService)
     {
         $this->activityLogService = $activityLogService;
+        $this->studentService = $studentService;
     }
 
     public function index(Request $request)
@@ -63,7 +65,6 @@ class StudentController extends Controller
         $request->validate([
             'full_name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:8|confirmed',
             'course' => 'required|string|max:255',
             'year_level' => 'required|string|max:50',
             'phone' => 'nullable|string|max:20',
@@ -73,28 +74,15 @@ class StudentController extends Controller
             'email.required' => 'Email is required.',
             'email.email' => 'Invalid email format.',
             'email.unique' => 'Email already exists.',
-            'password.required' => 'Password is required.',
-            'password.min' => 'Password must be at least 8 characters.',
-            'password.confirmed' => 'Password confirmation does not match.',
             'course.required' => 'Course is required.',
             'year_level.required' => 'Year level is required.',
             'phone.max' => 'Phone number cannot exceed 20 characters.',
             'address.max' => 'Address cannot exceed 500 characters.',
         ]);
 
-        $temporaryPassword = Str::random(8);
-
-        $student =  User::create([
-            'role' => 'student',
-            'student_id' => $this->generateStudentId(),
-            'full_name' => $data['full_name'],
-            'email' => $data['email'],
-            'password' => bcrypt($temporaryPassword),
-            'course' => $data['course'],
-            'year_level' => $data['year_level'],
-            'phone' => $data['phone'] ?? null,
-            'address' => $data['address'] ?? null,
-        ]);
+        $result = $this->studentService->createStudent($request->all());
+        $student = $result['student'];
+        $temporaryPassword = $result['temporary_password'];
 
         $this->activityLogService->logActivity(
             'create_student',
@@ -141,7 +129,9 @@ class StudentController extends Controller
         ]);
 
 
-        $student->update($request->only(['full_name', 'email', 'course', 'year_level', 'phone', 'address', 'is_active']));
+        $student->update($request->only(
+            ['full_name', 'email', 'course', 'year_level', 'phone', 'address', 'is_active']
+        ));
 
         $this->activityLogService->logActivity(
             'update_student',

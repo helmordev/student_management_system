@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\User;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class StudentService
 {
@@ -21,6 +22,25 @@ class StudentService
         }
 
         return $currentYear . '-' . str_pad($nextNumber, 6, '0', STR_PAD_LEFT);
+    }
+
+    public function createStudent(array $data)
+    {
+        $temporaryPassword = Str::random(8);
+
+        $student = User::create([
+            'role' => 'student',
+            'student_id' => $this->generateStudentId(),
+            'full_name' => $data['full_name'],
+            'email' => $data['email'],
+            'password' => Hash::make($temporaryPassword),
+            'course' => $data['course'],
+            'year_level' => $data['year_level'],
+            'phone' => $data['phone'] ?? null,
+            'address' => $data['address'] ?? null,
+        ]);
+
+        return ['student' => $student, 'temporary_password' => $temporaryPassword];
     }
 
     public function getStudentStatistics()
