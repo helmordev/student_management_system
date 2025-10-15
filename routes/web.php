@@ -81,7 +81,6 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function ()
     // PDF Reports
     Route::get('/reports/student-list/download', [PdfReportController::class, 'generateStudentListReport'])->name('reports.student-list.download');
     Route::get('/reports/student-grades/{studentId}/download', [PdfReportController::class, 'generateStudentGradesReport'])->name('reports.student-grades.download');
-    Route::get('/reports/student-transcript/{studentId}/download', [PdfReportController::class, 'generateStudentTranscript'])->name('reports.student-transcript.download');
     Route::get('/reports/grade-summary/download', [PdfReportController::class, 'generateGradeSummaryReport'])->name('reports.grade-summary.download');
 
     // Activity Logs

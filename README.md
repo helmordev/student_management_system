@@ -132,3 +132,65 @@ The system utilizes several key tables to manage student data:
 - `announcements`: Stores system-wide announcements.
 - `activity_logs`: Logs various actions and events within the system.
 - `cache`, `jobs`, `password_reset_tokens`, `sessions`: Standard Laravel tables for caching, queues, password resets, and session management.
+
+## File Generation Commands
+
+### Composer
+
+- `composer require barryvdh/laravel-dompdf`
+
+### Artisan
+
+#### Migrations
+
+- `php artisan make:migration create_grades_table`
+- `php artisan make:migration create_announcements_table`
+- `php artisan make:migration create_activity_logs_table`
+
+Run Migrations:
+
+- `php artisan migrate`
+
+#### Models
+
+- `php artisan make:model ActivityLog`
+- `php artisan make:model Announcement`
+- `php artisan make:model Grade`
+- `php artisan make:model User`
+
+#### Factories
+
+- `php artisan make:factory AnnouncementFactory`
+- `php artisan make:factory GradeFactory`
+- `php artisan make:factory UserFactory`
+
+#### Seeders
+
+- `php artisan make:seeder AnnouncementSeeder`
+- `php artisan make:seeder GradeSeeder`
+- `php artisan make:seeder StudentSeeder`
+
+Run Seeders:
+
+- `php artisan db:seed`
+
+#### Controllers
+
+- `php artisan make:controller Admin/DashboardController`
+- `php artisan make:controller Admin/StudentController`
+- `php artisan make:controller Admin/GradeController`
+- `php artisan make:controller Admin/AnnouncementController`
+- `php artisan make:controller Admin/ActivityLogController`
+- `php artisan make:controller Admin/ReportController`
+- `php artisan make:controller Student/DashboardController`
+- `php artisan make:controller Student/ProfileController`
+- `php artisan make:controller Student/GradeController`
+- `php artisan make:controller Student/AnnouncementController`
+- `php artisan make:controller Auth/AuthController`
+- `php artisan make:controller PdfReportController`
+
+#### Middleware
+
+- `php artisan make:middleware AdminMiddleware`
+- `php artisan make:middleware StudentMiddleware`
+
