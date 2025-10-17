@@ -41,7 +41,9 @@ class AnnouncementController extends Controller
             'publish_at.date' => 'The publish_at field must be a valid date.',
         ]);
 
-        Announcement::create($request->all());
+        $data = $request->all();
+        $data['created_by'] = Auth::id();
+        Announcement::create($data);
 
         $this->activityLogService->logActivity(
             'create_announcement',
