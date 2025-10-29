@@ -13,7 +13,7 @@ use Illuminate\View\View;
 
 class AuthController extends Controller
 {
-     protected $activityLogService;
+    protected $activityLogService;
 
     public function __construct(ActivityLogService $activityLogService)
     {
