@@ -16,7 +16,9 @@ class PdfReportController extends Controller
 
     public function generateStudentListReport(Request $request)
     {
-        return $this->pdfReportService->generateStudentListReport($request->all());
+        return $this->pdfReportService->generateStudentListReport(
+            $request->all(),
+        );
     }
 
     public function generateStudentGradesReport($studentId)
@@ -26,6 +28,8 @@ class PdfReportController extends Controller
 
     public function generateGradeSummaryReport(Request $request)
     {
-        return $this->pdfReportService->generateGradeSummaryReport($request->all());
+        return $this->pdfReportService->generateGradeSummaryReport(
+            $request->all(),
+        );
     }
 }

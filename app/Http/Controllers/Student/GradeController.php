@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Student;
 use App\Http\Controllers\Controller;
 use App\Services\ActivityLogService;
 use App\Services\PdfReportService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class GradeController extends Controller

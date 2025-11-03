@@ -8,13 +8,13 @@ use Illuminate\Support\Facades\Auth;
 
 class ActivityLogService
 {
-    public function logActivity($action, $description, Request $request = null, $studentId = null)
+    public function logActivity($action, $description, Request $request, $studentId = null)
     {
         $user = Auth::user();
 
         $logData = [
             'user_id' => $user ? $user->id : null,
-            'student_id' => $studentId ?: ($user && $user->isStudent() ? $user->student_id : null),
+            'student_id' => $studentId ?: ($user && $user()->isStudent() ? $user->student_id : null),
             'action' => $action,
             'description' => $description,
             'performed_at' => now(),

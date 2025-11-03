@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 
@@ -49,12 +50,12 @@ class StudentService
         $activeStudents = User::students()->active()->count();
 
         $courseDistribution = User::students()
-            ->select('course', \DB::raw('count(*) as total'))
+            ->select('course', DB::raw('count(*) as total'))
             ->groupBy('course')
             ->get();
 
         $yearLevelDistribution = User::students()
-            ->select('year_level', \DB::raw('count(*) as total'))
+            ->select('year_level', DB::raw('count(*) as total'))
             ->groupBy('year_level')
             ->get();
 
